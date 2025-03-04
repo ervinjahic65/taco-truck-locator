@@ -1,9 +1,19 @@
-# Ignore the .env file (contains sensitive data)
+# Ignore environment variables
 .env
 
-# Ignore the node_modules directory (dependencies)
+# Ignore dependencies
 node_modules/
 
-# Ignore any local development files
+# Ignore local development files
 .DS_Store
 .vscode/
+.idea/
+
+# Ignore logs and temporary files
+logs/
+*.log
+npm-debug.log*
+
+# Ignore build artifacts
+dist/
+build/

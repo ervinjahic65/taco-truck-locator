@@ -8,15 +8,36 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
     </head>
     <body>
-        <div class="container">
-            <h1 class="text-center my-4">Taco Truck Locator</h1>
-            <div id="locations-list" class="list-group"></div>
-            <div class="map-wrap my-4">
-                <img id="map" class="map img-fluid">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Left Column: Locations List -->
+                <div class="col-md-4 locations-list">
+                    <h1 class="text-center my-4">Taco Truck Locator</h1>
+                    <div id="locations-list" class="list-group"></div>
+                </div>
+
+                <!-- Right Column: Map -->
+                <div class="col-md-8 map-container">
+                    <div id="map" class="map"></div>
+                </div>
             </div>
         </div>
 
         <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-        <script src="js/script.js"></script>
+        <script src="js/scripts.js"></script>
+        <!-- Load Google Maps API dynamically -->
+        <script>
+            $(document).ready(function () {
+                // Fetch the Google Maps API key from the backend
+                $.get('/api/maps-key', function (response) {
+                    const apiKey = response.key;
+                    const script = document.createElement('script');
+                    script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=initMap`;
+                    script.async = true;
+                    script.defer = true;
+                    document.head.appendChild(script);
+                });
+            });
+        </script>
     </body>
 </html>
