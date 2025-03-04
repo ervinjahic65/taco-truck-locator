@@ -1,0 +1,9 @@
+# Ignore the .env file (contains sensitive data)
+.env
+
+# Ignore the node_modules directory (dependencies)
+node_modules/
+
+# Ignore any local development files
+.DS_Store
+.vscode/
