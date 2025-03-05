@@ -8,17 +8,35 @@
     </head>
     <body>
         <div class="container-fluid">
+            <header>
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <div>
+                        <img src="#" alt="Logo" class="logo">
+                    </div>
+                    <div>
+                        <ul>
+                            <li><a href="#">Menu</a></li>
+                            <li>
+                                <a href="#">
+                                    <img src="#" alt="Map">
+                                    Trcuk Locator
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                <div class="sub-header">
+                    Found <span id="locations-count"></span> taco Trucks in 
+                </div>
+            </header>
             <div class="row">
                 <!-- Left Column: Locations List -->
-                <div class="col-md-4 locations-list">
-                    <h1 class="text-center my-4">Taco Truck Locator</h1>
+                <div class="col-md-6 locations-list">
                     <div id="locations-list" class="list-group">
-                        <!-- Locations will be loaded dynamically -->
                     </div>
                 </div>
 
-                <!-- Right Column: Map Placeholder (visible by default) -->
-                <div class="col-md-8 map-container">
+                <div class="col-md-6 map-container">
                     <div id="map-placeholder" class="map-placeholder">
                         <p>Click a location card to load a map</p>
                     </div>
