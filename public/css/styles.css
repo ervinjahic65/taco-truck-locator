@@ -21,11 +21,25 @@ body {
 
 .map-container {
     padding: 0;
+    height: 100vh;
+    background-color: #f8f9fa; /* Gray background */
+}
+
+.map-placeholder {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 20px;
 }
 
 .map {
     height: 100vh;
     width: 100%;
+    display: none; /* Hidden by default */
 }
 
 .list-group-item {

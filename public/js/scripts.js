@@ -1,41 +1,55 @@
 $(document).ready(function () {
     let map;
 
-    // Define initMap in the global scope
-    window.initMap = function () {
-        map = new google.maps.Map(document.getElementById('map'), {
-            center: { lat: 37.7749, lng: -122.4194 }, // Default center (San Francisco)
-            zoom: 12,
-        });
-    };
-
-    // Fetch locations from the server
-    $.get('/api/locations', function (data) {
+    // Fetch locations from the backend API
+    $.get('/api/locations', function (locations) {
         const locationsList = $('#locations-list');
-        data.forEach((location) => {
+        
+        // Dynamically populate the list
+        locations.forEach(location => {
             const card = `
-                <div class="list-group-item">
+                <div class="list-group-item" data-lat="${location.latitude}" data-lng="${location.longitude}">
                     <h5>${location.name}</h5>
-                    <p>${location.address}, ${location.city}, ${location.state} ${location.postal_code}</p>
-                    <button class="btn btn-primary btn-sm directions" data-address="${location.address}, ${location.city}, ${location.state} ${location.postal_code}">DIRECTIONS</button>
-                    <button class="btn btn-info btn-sm more-info" data-id="${location.id}">MORE INFO</button>
+                    <p>${location.address}, ${location.city}, ${location.state}</p>
+                    <button class="btn btn-primary btn-sm directions">DIRECTIONS</button>
+                    <button class="btn btn-info btn-sm more-info">MORE INFO</button>
                 </div>
             `;
             locationsList.append(card);
         });
     });
 
-    // Handle "DIRECTIONS" button click
-    $(document).on('click', '.directions', function () {
-        const address = $(this).data('address');
-        const url = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(address)}`;
-        window.open(url, '_blank');
-    });
+    // Handle location card click
+    $(document).on('click', '.list-group-item', function () {
+        const lat = $(this).data('lat');
+        const lng = $(this).data('lng');
+        
+        // Hide placeholder and show map
+        $('#map-placeholder').hide();
+        $('#map').show();
 
-    // Handle "MORE INFO" button click
-    $(document).on('click', '.more-info', function () {
-        const id = $(this).data('id');
-        alert(`More info for location ID: ${id}`);
-        // You can implement an overlay or modal here
+        // Initialize or update the map
+        if (!map) {
+            // Load Google Maps API dynamically
+            $.get('/api/maps-key', function (response) {
+                const apiKey = response.key;
+                const script = document.createElement('script');
+                script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=initMap`;
+                script.async = true;
+                script.defer = true;
+                document.head.appendChild(script);
+
+                // Define the global initMap function
+                window.initMap = function () {
+                    map = new google.maps.Map(document.getElementById('map'), {
+                        center: { lat: parseFloat(lat), lng: parseFloat(lng) },
+                        zoom: 15
+                    });
+                };
+            });
+        } else {
+            // Update existing map
+            map.setCenter({ lat: parseFloat(lat), lng: parseFloat(lng) });
+        }
     });
 });

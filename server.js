@@ -21,13 +21,10 @@ app.get('/api/maps-key', (req, res) => {
 app.get('/api/locations', async (req, res) => {
     try {
         const response = await axios.get('https://my.api.mockaroo.com/locations.json', {
-            params: {
-                key: process.env.API_KEY, // Use your Mockaroo API key here
-            },
+            params: { key: process.env.API_KEY }
         });
         res.json(response.data);
     } catch (error) {
-        console.error('Error fetching locations:', error);
         res.status(500).send('Error fetching locations');
     }
 });
