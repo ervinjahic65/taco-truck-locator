@@ -54,6 +54,7 @@ body {
 
 .list-group-item p {
     margin-bottom: 10px;
+    cursor: pointer;
 }
 
 .btn {
