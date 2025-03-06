@@ -13,8 +13,8 @@ $(document).ready(function () {
                     <h5>${location.name}</h5>
                     <p data-lat="${location.latitude}" data-lng="${location.longitude}">${location.address}, ${location.city}, ${location.state}</p>
                     <div class="button-container">
-                        <button class="btn btn-primary btn-sm directions">DIRECTIONS</button>
-                        <button class="btn btn-info btn-sm more-info">MORE INFO</button>
+                        <button class="btn btn-secondary btn-sm directions">DIRECTIONS</button>
+                        <button class="btn btn-secondary btn-sm more-info">MORE INFO</button>
                     </div>
                 </div>
             `;
