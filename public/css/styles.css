@@ -90,13 +90,10 @@ body {
     list-style: none;
     padding: 0;
     margin: 0;
-    /* Remove justify-content */
 }
 
 .nav-item {
-     /* Remove or adjust margin-left as needed */
     margin-left: 0; /* Reset the margin */
-
 }
 
 .nav-link {
@@ -112,7 +109,7 @@ body {
     margin-right: 5px;
 }
 
-/* Add Spacing ONLY between the items */
+/* Spacing between items */
 .nav-item + .nav-item {
   margin-left: 20px;
 }
@@ -140,14 +137,23 @@ body {
     border: 2px solid #ddd;
 }
 
-/* Add this to your styles.css file */
+/* Modal Styles */
 .modal-dialog-right {
     margin-right: 0;
-    margin-top: 0; /* Remove default top margin */
-    margin-left: auto; /* Push to the right */
-    width: auto; /* Let content determine width */
-    max-width: 50%; /* Limit width, adjust as needed */
-    height: 100vh; /* Full viewport height */
-     /* Override Bootstrap's default transform */
-    transform: translate(0,0)!important;
+    margin-top: 0;
+    margin-left: auto;
+    width: auto;
+    max-width: 50%;
+    height: 100vh;
+    transform: translate(0,0)!important; /* Corrected transform */
+}
+
+.modal-content {
+    height: 100%; /* Make modal content full height */
+}
+.modal{
+  top:0;
+  right:0;
+  bottom:0;
+  left:0;
 }
