@@ -139,3 +139,15 @@ body {
     height: 100%;
     border: 2px solid #ddd;
 }
+
+/* Add this to your styles.css file */
+.modal-dialog-right {
+    margin-right: 0;
+    margin-top: 0; /* Remove default top margin */
+    margin-left: auto; /* Push to the right */
+    width: auto; /* Let content determine width */
+    max-width: 50%; /* Limit width, adjust as needed */
+    height: 100vh; /* Full viewport height */
+     /* Override Bootstrap's default transform */
+    transform: translate(0,0)!important;
+}

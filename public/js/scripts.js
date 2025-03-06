@@ -9,7 +9,7 @@ $(document).ready(function () {
         const locationsList = $('#locations-list');
         $('#locations-count').text(locations.length);
 
-        // Dynamically populate the list (CORRECTED)
+        // Dynamically populate the list
         locations.forEach(location => {
             const card = `
                 <div class="list-group-item">
@@ -26,15 +26,13 @@ $(document).ready(function () {
         });
     });
 
-     // Mock function to calculate distance (replace with actual calculation if needed)
+     // Mock function to calculate distance
     function calculateDistance(lat, lng) {
-        // This is a placeholder.  You'd normally use a formula like the Haversine formula
-        // to calculate the distance between two points on a sphere.  For this example,
-        // we'll just return a random number between 0.1 and 2.0.
+        // Placeholder - replace with actual distance calculation
         return (Math.random() * (2.0 - 0.1) + 0.1).toFixed(1);
     }
 
-    // Handle location card click (CORRECTED)
+    // Handle location card click (for map display)
     $(document).on('click', '.list-group-item p', function () {
         const lat = $(this).data('lat');
         const lng = $(this).data('lng');
@@ -65,7 +63,7 @@ $(document).ready(function () {
                    let marker = new google.maps.Marker({
                         position: { lat: parseFloat(lat), lng: parseFloat(lng) },
                         map: map,
-                        title: 'Taco Truck Location' // Or use location.name
+                        title: 'Taco Truck Location'
                     });
                     markers.push(marker);
                 };
@@ -90,41 +88,45 @@ $(document).ready(function () {
 
         }
     });
-      // Example click handlers for the buttons (add functionality as needed)
+
+    // Directions button click handler (opens in new tab)
     $(document).on('click', '.directions', function(event) {
-        event.stopPropagation(); // Prevent triggering the map update
-        // Add your directions logic here
-        console.log("Directions button clicked");
-         // Get the parent <p> tag to retrieve lat/lng
+        event.stopPropagation();
         const parentP = $(this).closest('.list-group-item').find('p');
         const lat = parentP.data('lat');
         const lng = parentP.data('lng');
-        console.log("Directions to:", lat, lng);
+        window.open(`https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`, '_blank');
     });
 
+    // More Info button click handler
     $(document).on('click', '.more-info', function(event) {
        event.stopPropagation();
         const locationId = $(this).data('id');
         const location = locationsData.find(loc => loc.id === locationId);
 
         if (location) {
-            showMoreInfoOverlay(location);
+            showMoreInfoModal(location);
         } else {
             console.error("Location not found for id:", locationId);
         }
     });
 
 
-    function showMoreInfoOverlay(location) {
-    const overlay = $(`
-        <div class="overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 1000; display: flex; justify-content: center; align-items: center;">
-            <div class="overlay-content" style="background-color: white; padding: 20px; border-radius: 5px; max-width: 80%; max-height: 80%; overflow-y: auto; position: relative;">
-                <button class="close-overlay" style="position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 20px; cursor: pointer;">X</button>
-                <h3>${location.name}</h3>
+   function showMoreInfoModal(location) {
+        const modal = $(`
+        <div class="modal" tabindex="-1" role="dialog" style="display: block; background-color: rgba(0,0,0,0.5);">
+          <div class="modal-dialog modal-dialog-right" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">${location.name}</h5>
+                 <button type="button" class="close close-modal" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
                 <p>${location.address}, ${location.city}, ${location.state} ${location.postal_code}</p>
-                <p>Phone: 123-456-7890</p>
-                <a href="https://www.google.com/maps/dir/?api=1&destination=${location.latitude},${location.longitude}" target="_blank">Get Directions</a>
-
+                <p class="phone">123-456-7890</p>
+                <p><a href="https://www.google.com/maps/dir/?api=1&destination=${location.latitude},${location.longitude}" target="_blank">Get Directions</a></p>
                 <table class="table">
                   <tbody>
                     <tr><td>Monday</td><td>${location.monday_open} - ${location.monday_close}</td></tr>
@@ -136,33 +138,35 @@ $(document).ready(function () {
                     <tr><td>Sunday</td><td>${location.sunday_open} - ${location.sunday_close}</td></tr>
                   </tbody>
                 </table>
-
-                <button class="view-full-details btn btn-primary">VIEW FULL DETAILS</button>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary view-full-details">VIEW FULL DETAILS</button>
+              </div>
             </div>
+          </div>
         </div>
-    `);
+        `);
 
-    $('body').append(overlay);
+        $('body').append(modal);
 
-      // Close overlay handler
-    overlay.find('.close-overlay').on('click', function() {
-        overlay.remove();
-    });
-
-     // Prevent clicks within the overlay from closing it
-    overlay.find('.overlay-content').on('click', function(event) {
-        event.stopPropagation();
-    });
-
-
-      // "VIEW FULL DETAILS" button handler
-        overlay.find('.view-full-details').on('click', function() {
+          // "VIEW FULL DETAILS" button handler (opens in new tab)
+        modal.find('.view-full-details').on('click', function() {
            window.open(location.url, '_blank');
         });
 
-      //close overlay if click outside the overlay-content
-      overlay.on('click', function() {
-            overlay.remove();  // Remove the overlay from the DOM
+        // Close modal
+        modal.find('.close-modal').on('click', function() {
+            modal.remove();
         });
-}
+
+        // Prevent clicks within from closing
+        modal.find('.modal-content').on('click', function(event){
+            event.stopPropagation();
+        });
+
+        // Close when clicking outside
+        modal.on('click', function() {
+            modal.remove();
+        });
+    }
 });
