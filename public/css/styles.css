@@ -11,7 +11,7 @@ body {
 }
 
 .row {
-    margin: 0;
+    margin: 2%;
 }
 
 .locations-list {
@@ -120,6 +120,12 @@ body {
     text-align: center;
     font-weight: bold;
 }
+
+.sub-header h2 {
+    margin: 1%;
+    text-align: left;
+}
+
 .list-group-item{
      position: relative;
 }
