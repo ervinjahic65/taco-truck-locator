@@ -81,8 +81,8 @@ body {
     height: auto;
 }
 
-.menu-container {
-    /*  Remove text-align and flex grow */
+.menu-item {
+    margin-top: 5px;
 }
 
 .navbar-nav {
