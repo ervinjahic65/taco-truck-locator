@@ -11,10 +11,16 @@ $(document).ready(function () {
 
         // Dynamically populate the list
         locations.forEach(location => {
+            const closeTime = getCurrentDayAndCloseTime(location);
             const card = `
                 <div class="list-group-item">
-                    <h5>${location.name}</h5>
-                    <p data-lat="${location.latitude}" data-lng="${location.longitude}">${location.address}, ${location.city}, ${location.state}</p>
+                    <h5>${location.name}<br><br></h5>
+                    <p data-lat="${location.latitude}" data-lng="${location.longitude}">
+                        ${location.address}<br> 
+                        ${location.city}, ${location.state} ${location.postal_code}
+                    </p>
+                    <p class='closes-time'> Open today until  ${closeTime} </p>
+                    <p class="phone"> <img src='assets/phone-icon.png' alt='phone'> 123-456-7890 <br><br></p>
                     <span class="distance"> ${calculateDistance(location.latitude, location.longitude)} miles</span>
                     <div class="button-container">
                         <button class="btn btn-secondary btn-sm directions">DIRECTIONS</button>
@@ -111,6 +117,34 @@ $(document).ready(function () {
         }
     });
 
+    function getCurrentDayAndCloseTime(location) {
+        const today = new Date().getDay();
+        let closeTime = '';
+        switch (today) {
+            case 0:
+                closeTime = location.sunday_close;
+                break;
+            case 1:
+                closeTime = location.monday_close;
+                break;
+            case 2:
+                closeTime = location.tuesday_close;
+                break;
+            case 3:
+                closeTime = location.wednesday_close;
+                break;
+            case 4:
+                closeTime = location.thursday_close;
+                break;
+            case 5:
+                closeTime = location.friday_close;
+                break;
+            case 6:
+                closeTime = location.saturday_close;
+                break;
+        }
+        return closeTime;
+    }
 
    function showMoreInfoModal(location) {
         const modal = $(`
@@ -140,7 +174,7 @@ $(document).ready(function () {
                 </table>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-primary view-full-details">VIEW FULL DETAILS</button>
+                <button type="button" class="btn btn-secondary view-full-details">VIEW FULL DETAILS</button>
               </div>
             </div>
           </div>
