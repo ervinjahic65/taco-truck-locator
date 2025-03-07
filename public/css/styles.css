@@ -168,6 +168,11 @@ p.phone {
   left:0;
 }
 
+.modal-body {
+    margin: auto;
+    overflow-y: scroll;
+}
+
 .modal-footer {
     justify-content: center !important;
 }
@@ -178,4 +183,9 @@ p.phone {
 
 .closes-time {
     color: aqua;
+}
+
+.icons-directions {
+    display: flex;
+    justify-content: stretch;
 }

@@ -152,15 +152,24 @@ $(document).ready(function () {
           <div class="modal-dialog modal-dialog-right" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title">${location.name}</h5>
+                
                  <button type="button" class="close close-modal" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <div class="modal-body">
-                <p>${location.address}, ${location.city}, ${location.state} ${location.postal_code}</p>
-                <p class="phone">123-456-7890</p>
-                <p><a href="https://www.google.com/maps/dir/?api=1&destination=${location.latitude},${location.longitude}" target="_blank">Get Directions</a></p>
+                <img src='assets/default.jpg' alt='default' style='width: 90%;'  class='default-image'>
+                <br><br>
+                <h5>${location.name}</h5>
+                <p>${location.address} <br> ${location.city}, ${location.state} ${location.postal_code}</p>
+                <div class="icons-directions">
+                    <p class="phone"><img src='assets/phone-icon.png' alt='phone'> 123-456-7890</p>
+                    <p>
+                        <a style="color: #f7941f !important;" href="https://www.google.com/maps/dir/?api=1&destination=${location.latitude},${location.longitude}" target="_blank">
+                            <img src='assets/direction-icon.png' alt='direction'>    Get Directions
+                        </a>
+                    </p>
+                </div>
                 <table class="table">
                   <tbody>
                     <tr><td>Monday</td><td>${location.monday_open} - ${location.monday_close}</td></tr>
