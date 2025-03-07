@@ -59,6 +59,10 @@ body {
     cursor: pointer;
 }
 
+p.phone {
+    color: #f7941f;
+}
+
 .btn {
     margin-right: 5px;
 }
