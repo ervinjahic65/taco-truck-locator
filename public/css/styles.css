@@ -198,3 +198,128 @@ p.phone {
     display: flex;
     justify-content: stretch;
 }
+
+@media (max-width: 767px) {
+    /* Hide the desktop header on mobile */
+    .d-none.d-md-block {
+        display: none !important;
+    }
+
+    /* MOBILE TOP BAR */
+    .mobile-top-bar {
+        background-color: #333; /* or any color you want */
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 15px;
+    }
+    .hamburger-left {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+    }
+    .hamburger-left .bar {
+        width: 20px;
+        height: 2px;
+        background-color: #fff;
+        margin: 3px 0;
+    }
+    .logo-center .mobile-logo {
+        height: 30px;
+        width: auto;
+    }
+    .map-icon-right img {
+        width: 24px;
+        height: auto;
+    }
+
+    /* Adjust main row so it can stack or be toggled by JS */
+    .row {
+        margin: 0 !important;
+    }
+    .col-md-6 {
+        padding: 0 !important;
+        height: auto !important; /* Let it shrink */
+    }
+
+    /* MOBILE BOTTOM BAR */
+    .mobile-bottom-bar {
+        position: fixed;
+        bottom: 0; left: 0; right: 0;
+        height: 50px;
+        background-color: #f7941f; /* orange */
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        z-index: 999;
+    }
+    .mobile-bar-btn {
+        color: #fff;
+        font-weight: bold;
+        font-size: 1rem;
+        text-transform: uppercase;
+        cursor: pointer;
+    }
+    .mobile-bar-btn.active {
+        text-decoration: underline;
+    }
+
+    /* Center the "More Info" modal on mobile (instead of sliding from right) */
+    .modal-dialog-right {
+        margin: auto !important;
+        max-width: 90% !important;
+        height: auto !important;
+    }
+    .modal-content {
+        height: auto !important;
+    }
+
+    @media (max-width: 767px) {
+        /* Mobile Header Container */
+        .mobile-top-bar {
+          background-color: #333; /* Dark or whatever color you want */
+          height: 50px;
+        }
+      
+        /* Flex container for the 3 items: hamburger, logo, map icon */
+        .mobile-header-inner {
+          display: flex;
+          align-items: center;
+          justify-content: space-between; /* Left, center, right */
+          height: 100%;
+          padding: 0 15px;
+        }
+      
+        /* Hamburger on the left */
+        .hamburger-left {
+          display: flex;
+          flex-direction: column;
+          cursor: pointer;
+        }
+        .hamburger-left .bar {
+          width: 20px;
+          height: 2px;
+          background-color: #fff;
+          margin: 3px 0;
+        }
+      
+        /* Force the logo to remain in the exact center */
+        .mobile-logo-center {
+          flex: 1; /* Takes up remaining space, pushing logo to center */
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        .mobile-logo {
+          height: 25px; 
+          width: auto;
+        }
+      
+        /* Map icon on the right */
+        .map-icon-right img {
+          width: 24px;
+          height: auto;
+        }
+    }      
+}

@@ -1,52 +1,90 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Taco Truck Locator</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/styles.css" rel="stylesheet">
-    </head>
-    <body>
-        <div class="container-fluid">
-            <header>
-                <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                    <div class="logo-container">
-                        <a href="#"><img src="assets/rioseo-logo.png" alt="Logo" class="logo"></a> </div>
-                    <div class="menu-container">
-                        <ul class="navbar-nav">
-                            <li class="nav-item menu-item"><a class="nav-link" href="#">Menu</a></li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#" id="truck-locator-link">
-                                    <img src="assets/map-pin.png" alt="Map" class="map-icon">
-                                    Truck Locator
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-                <div class="sub-header">
-                    <h2>
-                        Found <span id="locations-count"></span> Taco Trucks <span id="location-postal_code"></span>
-                    </h2>
-                </div>
-            </header>
-            <div class="row">
-                <!-- Left Column: Locations List -->
-                <div class="col-md-6 locations-list">
-                    <div id="locations-list" class="list-group">
-                    </div>
-                </div>
+<head>
+    <title>Taco Truck Locator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Your main desktop+mobile styles -->
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+<body>
 
-                <div class="col-md-6 map-container">
-                    <div id="map-placeholder" class="map-placeholder">
-                        <p>Click a location card to load a map</p>
-                    </div>
-                    <div id="map" class="map" style="display: none;"></div>
-                </div>
+<!-- DESKTOP HEADER (hidden on mobile) -->
+<header class="d-none d-md-block">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="logo-container">
+            <a href="#"><img src="assets/rioseo-logo.png" alt="Logo" class="logo"></a>
+        </div>
+        <div class="menu-container">
+            <ul class="navbar-nav">
+                <li class="nav-item menu-item"><a class="nav-link" href="#">Menu</a></li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" id="truck-locator-link">
+                        <img src="assets/map-pin.png" alt="Map" class="map-icon">
+                        Truck Locator
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="sub-header">
+        <h2>
+            Found <span id="locations-count"></span> Taco Trucks <span id="location-postal_code"></span>
+        </h2>
+    </div>
+</header>
+
+<!-- MOBILE HEADER (visible only on small screens) -->
+<header class="mobile-top-bar d-block d-md-none">
+    <div class="mobile-header-inner">
+      <!-- Hamburger on the left -->
+      <div class="hamburger-left">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+  
+      <!-- Logo in the center -->
+      <div class="mobile-logo-center">
+        <img src="assets/rioseo-logo.png" alt="Logo" class="mobile-logo">
+      </div>
+  
+      <!-- Map icon on the right -->
+      <div class="map-icon-right">
+        <img src="assets/map-pin.png" alt="Map Icon">
+      </div>
+    </div>
+</header>
+
+<!-- MAIN CONTENT: same row/columns as before -->
+<div class="container-fluid">
+    <div class="row">
+        <!-- Left Column: Locations List -->
+        <div class="col-md-6 locations-list">
+            <div id="locations-list" class="list-group">
+                <!-- JS populates the list here -->
             </div>
         </div>
 
-        <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-        <script src="js/scripts.js"></script>
-    </body>
+        <!-- Right Column: Map -->
+        <div class="col-md-6 map-container">
+            <div id="map-placeholder" class="map-placeholder">
+                <p>Click a location card to load a map</p>
+            </div>
+            <div id="map" class="map" style="display: none;"></div>
+        </div>
+    </div>
+</div>
+
+<!-- MOBILE BOTTOM BAR (shown only on small screens) -->
+<div class="mobile-bottom-bar d-md-none">
+    <div id="mobileListBtn" class="mobile-bar-btn active">List</div>
+    <div id="mobileMapBtn" class="mobile-bar-btn">Map</div>
+</div>
+
+<!-- Scripts (unchanged) -->
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script src="js/scripts.js"></script>
+</body>
 </html>
