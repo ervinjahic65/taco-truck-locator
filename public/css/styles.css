@@ -329,5 +329,31 @@ p.phone {
         .map-container {
             display: none;
         }
+        .locations-list {
+            height: calc(100vh - 100px); /* Account for top/bottom bars */
+        }
+          
+        .map-container {
+            height: calc(100vh - 100px) !important;
+            display: none;
+        }
+        
+        .map {
+            height: 100% !important;
+        }
+        .mobile-top-bar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        
+        .locations-list {
+            margin-top: 50px; /* Match header height */
+        }
+        
+        .map-container {
+            margin-top: 50px;
+        }
     }      
 }

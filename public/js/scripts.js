@@ -93,6 +93,17 @@ $(document).ready(function () {
              markers.push(marker);
 
         }
+
+        if (window.innerWidth < 768) {
+            // Switch to Map tab
+            $('.locations-list').hide();
+            $('.map-container').show();
+            $('#mobileMapBtn').addClass('active');
+            $('#mobileListBtn').removeClass('active');
+            
+            // Ensure map resizes properly
+            if (map) setTimeout(() => google.maps.event.trigger(map, 'resize'), 100);
+        }
     });
 
     // Directions button click handler (opens in new tab)
@@ -225,13 +236,18 @@ $(document).ready(function () {
             $('#mobileListBtn').addClass('active');
             $('#mobileMapBtn').removeClass('active');
         });
-
-        // Click: Map
+        
         $('#mobileMapBtn').on('click', function() {
             $('.locations-list').hide();
             $('.map-container').show();
             $('#mobileMapBtn').addClass('active');
             $('#mobileListBtn').removeClass('active');
+            
+            // Show placeholder if no map initialized yet
+            if (!map) {
+                $('#map-placeholder').show();
+                $('#map').hide();
+            }
         });
     }
     // ------------------------------------------------------
