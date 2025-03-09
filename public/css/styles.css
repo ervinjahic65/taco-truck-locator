@@ -190,6 +190,14 @@ p.phone {
     width: -webkit-fill-available;
 }
 
+.modal-header {
+    border-bottom: none !important;
+}
+
+.modal-footer {
+    border-top: none !important;
+}
+
 .closes-time {
     color: aqua;
 }
@@ -248,7 +256,6 @@ p.phone {
         position: fixed;
         bottom: 0; left: 0; right: 0;
         height: 50px;
-        background-color: #f7941f; /* orange */
         display: flex;
         align-items: center;
         justify-content: space-around;
@@ -258,11 +265,7 @@ p.phone {
         color: #fff;
         font-weight: bold;
         font-size: 1rem;
-        text-transform: uppercase;
         cursor: pointer;
-    }
-    .mobile-bar-btn.active {
-        text-decoration: underline;
     }
 
     /* Center the "More Info" modal on mobile (instead of sliding from right) */
@@ -274,86 +277,117 @@ p.phone {
     .modal-content {
         height: auto !important;
     }
+    .modal-body .default-image {
+        width: 100% !important;
+    }
 
-    @media (max-width: 767px) {
-        /* Mobile Header Container */
-        .mobile-top-bar {
-          background-color: #333; /* Dark or whatever color you want */
-          height: 50px;
-        }
-      
-        /* Flex container for the 3 items: hamburger, logo, map icon */
-        .mobile-header-inner {
-          display: flex;
-          align-items: center;
-          justify-content: space-between; /* Left, center, right */
-          height: 100%;
-          padding: 0 15px;
-        }
-      
-        /* Hamburger on the left */
-        .hamburger-left {
-          display: flex;
-          flex-direction: column;
-          cursor: pointer;
-        }
-        .hamburger-left .bar {
-          width: 20px;
-          height: 2px;
-          background-color: #fff;
-          margin: 3px 0;
-        }
-      
-        /* Force the logo to remain in the exact center */
-        .mobile-logo-center {
-          flex: 1; /* Takes up remaining space, pushing logo to center */
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-        .mobile-logo {
-          height: 25px; 
-          width: auto;
-        }
-      
-        /* Map icon on the right */
-        .map-icon-right img {
-          width: 24px;
-          height: auto;
-        }
+    /* Mobile Header Container */
+    .mobile-top-bar {
+        background-color: #333; /* Dark or whatever color you want */
+        height: 50px;
+    }
+    
+    /* Flex container for the 3 items: hamburger, logo, map icon */
+    .mobile-header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between; /* Left, center, right */
+        height: 100%;
+        padding: 0 15px;
+    }
+    
+    /* Hamburger on the left */
+    .hamburger-left {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+    }
+    .hamburger-left .bar {
+        width: 20px;
+        height: 2px;
+        background-color: #fff;
+        margin: 3px 0;
+    }
+    
+    /* Force the logo to remain in the exact center */
+    .mobile-logo-center {
+        flex: 1; /* Takes up remaining space, pushing logo to center */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .mobile-logo {
+        height: 25px; 
+        width: auto;
+    }
+    
+    /* Map icon on the right */
+    .map-icon-right img {
+        width: 24px;
+        height: auto;
+    }
 
-        .table td {
-            padding: 0 !important;
-        }
+    .table td {
+        padding: 0 !important;
+    }
 
-        .map-container {
-            display: none;
-        }
-        .locations-list {
-            height: calc(100vh - 100px); /* Account for top/bottom bars */
-        }
-          
-        .map-container {
-            height: calc(100vh - 100px) !important;
-            display: none;
-        }
+    .map-container {
+        display: none;
+    }
+    .locations-list {
+        height: calc(100vh - 100px); /* Account for top/bottom bars */
+    }
         
-        .map {
-            height: 100% !important;
-        }
-        .mobile-top-bar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-        }
-        
-        .locations-list {
-            margin-top: 50px; /* Match header height */
-        }
-        
-        .map-container {
-            margin-top: 50px;
-        }
-    }      
+    .map-container {
+        height: calc(100vh - 100px) !important;
+        display: none;
+    }
+    
+    .map {
+        height: 100% !important;
+    }
+    .mobile-top-bar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+    }
+    
+    .locations-list {
+        margin-top: 50px; /* Match header height */
+    }
+    
+    .map-container {
+        margin-top: 50px;
+    }
+    /* Update mobile bottom bar styles */
+    .mobile-bottom-bar {
+        background-color: #fff !important; /* White background for the bar */
+        border-top: 1px solid #ddd;
+        display: flex;
+        height: 50px;
+    }
+
+    .mobile-bar-btn {
+        flex: 1;
+        width: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #FFD700;
+        padding: 13px 0;
+        transition: all 0.3s ease;
+        box-sizing: border-box;
+    }
+
+    .mobile-bar-btn.active {
+        background-color: #FFD700; /* Yellow background */
+        color: #FFF;
+        font-weight: bold;
+    }
+
+    .mobile-bottom-bar {
+        padding: 0;
+        margin: 0;
+    }  
 }
