@@ -1,0 +1,19 @@
+# Ignore environment variables
+.env
+
+# Ignore dependencies
+node_modules/
+
+# Ignore local development files
+.DS_Store
+.vscode/
+.idea/
+
+# Ignore logs and temporary files
+logs/
+*.log
+npm-debug.log*
+
+# Ignore build artifacts
+dist/
+build/

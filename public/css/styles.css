@@ -1,0 +1,398 @@
+/* styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container-fluid {
+    padding: 0;
+}
+
+.row {
+    margin: 2%;
+}
+
+.locations-list {
+    background-color: #f8f9fa;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+.map-container {
+    padding: 0;
+    height: 100vh;
+    background-color: #f8f9fa; /* Gray background */
+}
+
+.map-placeholder {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 20px;
+}
+
+.map {
+    height: 100vh;
+    width: 100%;
+    display: none; /* Hidden by default */
+}
+
+.list-group-item {
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.list-group-item h5 {
+    margin-bottom: 5px;
+}
+
+.list-group-item p {
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+p.phone {
+    color: #f7941f;
+}
+
+.btn {
+    margin-right: 5px;
+}
+
+/* Header Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    border-bottom: 2px solid #ddd;
+}
+
+.logo-container {
+    flex-shrink: 0;
+}
+
+.logo {
+    width: 100px;
+    height: auto;
+}
+
+.menu-item {
+    margin-top: 5px;
+}
+
+.navbar-nav {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-item {
+    margin-left: 0; /* Reset the margin */
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #333;
+    display: flex;
+    align-items: center;
+}
+
+.button-container {
+    display: flex;
+    justify-content: stretch;
+}
+
+.button-container button {
+    width: -webkit-fill-available;
+}
+
+.map-icon {
+    width: 20px;
+    height: auto;
+    margin-right: 5px;
+}
+
+/* Spacing between items */
+.nav-item + .nav-item {
+  margin-left: 20px;
+}
+
+.sub-header {
+    background-color: #f8f9fa;
+    padding: 10px 0;
+    text-align: center;
+    font-weight: bold;
+}
+
+.sub-header h2 {
+    margin: 1%;
+    text-align: left;
+}
+
+.list-group-item{
+     position: relative;
+}
+.distance {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 0.8em;
+    color: #666;
+}
+
+.map-placeholder{
+    width: 100%;
+    height: 100%;
+    border: 2px solid #ddd;
+}
+
+/* Modal Styles */
+.modal-dialog-right {
+    margin-right: 0;
+    margin-top: 0;
+    margin-left: auto;
+    width: auto;
+    max-width: 50%;
+    height: 100vh;
+    transform: translate(0,0)!important; /* Corrected transform */
+}
+
+.modal-content {
+    height: 100%; /* Make modal content full height */
+}
+.modal{
+  top:0;
+  right:0;
+  bottom:0;
+  left:0;
+}
+
+.modal-body {
+    margin: auto;
+    overflow-y: scroll;
+}
+
+.modal-footer {
+    justify-content: center !important;
+}
+
+.modal-footer button {
+    width: -webkit-fill-available;
+}
+
+.modal-header {
+    border-bottom: none !important;
+}
+
+.modal-footer {
+    border-top: none !important;
+}
+
+.closes-time {
+    color: aqua;
+}
+
+.icons-directions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.current-day {
+    font-weight: bold !important;
+}
+
+@media (max-width: 767px) {
+    /* Hide the desktop header on mobile */
+    .d-none.d-md-block {
+        display: none !important;
+    }
+
+    /* MOBILE TOP BAR */
+    .mobile-top-bar {
+        background-color: #333; /* or any color you want */
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 15px;
+    }
+    .hamburger-left {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+    }
+    .hamburger-left .bar {
+        width: 20px;
+        height: 2px;
+        background-color: #fff;
+        margin: 3px 0;
+    }
+    .logo-center .mobile-logo {
+        height: 30px;
+        width: auto;
+    }
+    .map-icon-right img {
+        width: 24px;
+        height: auto;
+    }
+
+    /* Adjust main row so it can stack or be toggled by JS */
+    .row {
+        margin: 0 !important;
+    }
+    .col-md-6 {
+        padding: 0 !important;
+        height: auto !important; /* Let it shrink */
+    }
+
+    /* MOBILE BOTTOM BAR */
+    .mobile-bottom-bar {
+        position: fixed;
+        bottom: 0; left: 0; right: 0;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        z-index: 999;
+    }
+    .mobile-bar-btn {
+        color: #fff;
+        font-weight: bold;
+        font-size: 1rem;
+        cursor: pointer;
+    }
+
+    /* Center the "More Info" modal on mobile (instead of sliding from right) */
+    .modal-dialog-right {
+        margin: 15% 5% !important;
+        max-width: 90% !important;
+        height: auto !important;
+    }
+    .modal-content {
+        height: auto !important;
+    }
+    .modal-body .default-image {
+        width: 100% !important;
+    }
+
+    /* Mobile Header Container */
+    .mobile-top-bar {
+        background-color: #333; /* Dark or whatever color you want */
+        height: 50px;
+    }
+    
+    /* Flex container for the 3 items: hamburger, logo, map icon */
+    .mobile-header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between; /* Left, center, right */
+        height: 100%;
+        padding: 0 15px;
+    }
+    
+    /* Hamburger on the left */
+    .hamburger-left {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+    }
+    .hamburger-left .bar {
+        width: 20px;
+        height: 2px;
+        background-color: #fff;
+        margin: 3px 0;
+    }
+    
+    /* Force the logo to remain in the exact center */
+    .mobile-logo-center {
+        flex: 1; /* Takes up remaining space, pushing logo to center */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .mobile-logo {
+        height: 25px; 
+        width: auto;
+    }
+    
+    /* Map icon on the right */
+    .map-icon-right img {
+        width: 24px;
+        height: auto;
+    }
+
+    .table td {
+        padding: 0 !important;
+        border: none !important;
+    }
+
+    .map-container {
+        display: none;
+    }
+    .locations-list {
+        height: calc(100vh - 100px); /* Account for top/bottom bars */
+    }
+        
+    .map-container {
+        height: calc(100vh - 100px) !important;
+        display: none;
+    }
+    
+    .map {
+        height: 100% !important;
+    }
+    .mobile-top-bar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+    }
+    
+    .locations-list {
+        margin-top: 50px; /* Match header height */
+    }
+    
+    .map-container {
+        margin-top: 50px;
+    }
+    /* Update mobile bottom bar styles */
+    .mobile-bottom-bar {
+        background-color: #fff !important; /* White background for the bar */
+        border-top: 1px solid #ddd;
+        display: flex;
+        height: 50px;
+    }
+
+    .mobile-bar-btn {
+        flex: 1;
+        width: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #FFD700;
+        padding: 13px 0;
+        transition: all 0.3s ease;
+        box-sizing: border-box;
+    }
+
+    .mobile-bar-btn.active {
+        background-color: #FFD700; /* Yellow background */
+        color: #FFF;
+        font-weight: bold;
+    }
+
+    .mobile-bottom-bar {
+        padding: 0;
+        margin: 0;
+    }  
+}
