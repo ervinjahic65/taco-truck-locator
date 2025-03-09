@@ -212,4 +212,27 @@ $(document).ready(function () {
             modal.remove();
         });
     }
+
+    // Only do this on mobile widths
+    if (window.innerWidth < 768) {
+        // Default: List tab active
+        $('#mobileListBtn').addClass('active');
+
+        // Click: List
+        $('#mobileListBtn').on('click', function() {
+            $('.locations-list').show();
+            $('.map-container').hide();
+            $('#mobileListBtn').addClass('active');
+            $('#mobileMapBtn').removeClass('active');
+        });
+
+        // Click: Map
+        $('#mobileMapBtn').on('click', function() {
+            $('.locations-list').hide();
+            $('.map-container').show();
+            $('#mobileMapBtn').addClass('active');
+            $('#mobileListBtn').removeClass('active');
+        });
+    }
+    // ------------------------------------------------------
 });
