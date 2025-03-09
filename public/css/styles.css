@@ -196,7 +196,7 @@ p.phone {
 
 .icons-directions {
     display: flex;
-    justify-content: stretch;
+    justify-content: space-between;
 }
 
 @media (max-width: 767px) {
