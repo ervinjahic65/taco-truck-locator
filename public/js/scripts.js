@@ -203,6 +203,12 @@ $(document).ready(function () {
 
         $('body').append(modal);
 
+        const rows = modal.find('tbody tr');
+        const today = new Date().getDay();
+        // Convert Sunday (0) to index 6, Monday (1) to 0, etc.
+        const todayRowIndex = (today + 6) % 7; 
+        rows.eq(todayRowIndex).addClass('current-day');
+
           // "VIEW FULL DETAILS" button handler (opens in new tab)
         modal.find('.view-full-details').on('click', function() {
            window.open(location.url, '_blank');

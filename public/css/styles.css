@@ -207,6 +207,10 @@ p.phone {
     justify-content: space-between;
 }
 
+.current-day {
+    font-weight: bold !important;
+}
+
 @media (max-width: 767px) {
     /* Hide the desktop header on mobile */
     .d-none.d-md-block {
@@ -329,6 +333,7 @@ p.phone {
 
     .table td {
         padding: 0 !important;
+        border: none !important;
     }
 
     .map-container {
