@@ -267,7 +267,7 @@ p.phone {
 
     /* Center the "More Info" modal on mobile (instead of sliding from right) */
     .modal-dialog-right {
-        margin: auto !important;
+        margin: 15% 5% !important;
         max-width: 90% !important;
         height: auto !important;
     }
@@ -320,6 +320,10 @@ p.phone {
         .map-icon-right img {
           width: 24px;
           height: auto;
+        }
+
+        .table td {
+            padding: 0 !important;
         }
     }      
 }
